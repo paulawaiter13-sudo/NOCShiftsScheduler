@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOC Shift Scheduler</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>NOC Weekly Shift Scheduler</h1>
+      <p>
+        Employees block unavailable shifts for next week. Scheduler auto-builds a fair roster and lets managers edit it manually.
+      </p>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>1) Team Setup</h2>
+        <div class="row">
+          <label for="employee-name">Employee name</label>
+          <input id="employee-name" type="text" placeholder="e.g. Dana" />
+          <button id="add-employee">Add employee</button>
+        </div>
+        <ul id="employee-list" class="pill-list"></ul>
+      </section>
+
+      <section class="card">
+        <h2>2) Availability Matrix (block unavailable shifts)</h2>
+        <div class="toolbar">
+          <label for="selected-employee">Selected employee</label>
+          <select id="selected-employee"></select>
+          <button id="clear-employee-blocks" class="secondary">Clear employee blocks</button>
+        </div>
+        <div class="legend">
+          <span><strong>Available:</strong> white</span>
+          <span><strong>Blocked:</strong> red</span>
+        </div>
+        <div class="table-wrap">
+          <table id="availability-table"></table>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>3) Build Weekly Schedule</h2>
+        <div class="toolbar">
+          <button id="generate-schedule">Generate with AI helper</button>
+          <button id="reset-schedule" class="secondary">Reset</button>
+        </div>
+        <div class="table-wrap">
+          <table id="schedule-table"></table>
+        </div>
+        <p id="helper-note"></p>
+      </section>
+    </main>
+
+    <template id="day-shift-row-template">
+      <tr>
+        <td class="sticky-col day-cell"></td>
+        <td class="shift-cell"></td>
+        <td><select class="assignment-select"></select></td>
+      </tr>
+    </template>
+
+    <script src="app.js"></script>
+  </body>
+</html>
